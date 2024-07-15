@@ -2,3 +2,5 @@
 [Dd]ebug/*
 *.o
 *.out
+.cache/*
+compile_commands.json
