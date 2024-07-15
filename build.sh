@@ -30,15 +30,9 @@ build ()
     fi
 }
 
-if  [ "$1" = "build" ]
-then
-    echo $1
-    echo "building:"
-    build
-fi
-
-
 if  [ "$1" = "update" ]
 then
     updateCompileCommands
+else
+    build
 fi
