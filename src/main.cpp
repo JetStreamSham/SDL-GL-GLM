@@ -1,7 +1,11 @@
-#include <SDL2/SDL_events.h>
-#include <SDL2/SDL_video.h>
 #include <stdlib.h>
+#define GLAD_GL_IMPLEMENTATION
+#include "glad/gl.h"
+#include <SDL2/SDL_video.h>
+#include <SDL2/SDL_events.h>
 #include <SDL2/SDL.h>
+#include <glm/fwd.hpp>
+#include <glm/glm.hpp>
 
 int main(int argc, char* argv[])
 {
@@ -14,6 +18,11 @@ int main(int argc, char* argv[])
 	bool quit = false;
 
 	
+	glm::vec2 a(1.,2.);
+
+	SDL_GLContext context = SDL_GL_CreateContext(window);
+
+	int version = gladLoadGL((GLADloadfunc)SDL_GL_GetProcAddress);
 
 	while (!quit)
 	{
