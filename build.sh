@@ -1,6 +1,4 @@
 #!/bin/bash
-build_baseProject="g++ -o ./bin/main.out ./SDL-GL-GLM/src/*.cpp -lSDL2 -I.//SDL-GL-GLM/include -I./imgui"
-build_imgui="g++ -c ./imgui/*.cpp  ./imgui/backends/imgui_impl_opengl3.cpp ./imgui/backends/imgui_impl_sdl2.cpp -I./imgui `sdl2-config --cflags --libs`"
 
 build ()
 {
@@ -9,6 +7,7 @@ build ()
     mkdir ./obj
     mkdir ./obj/imgui
 
+    build_imgui="g++ -c ./imgui/*.cpp  ./imgui/backends/imgui_impl_opengl3.cpp ./imgui/backends/imgui_impl_sdl2.cpp -I./imgui `sdl2-config --cflags --libs`"
     echo $build_imgui
 
     if hash bear
@@ -22,6 +21,7 @@ build ()
     
 #build the thing
     echo $build_baseProject
+    build_baseProject="g++ -o ./bin/main.out `ls ./obj/imgui/*.o` ./SDL-GL-GLM/src/*.cpp -lSDL2 -I.//SDL-GL-GLM/include -I./imgui -I./imgui/backends "
 
     if hash bear
     then
